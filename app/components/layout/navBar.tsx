@@ -1,0 +1,80 @@
+import { Col, Row, Menu } from 'antd';
+import type { MenuProps } from 'antd';
+import { menus } from '@/app/common/util/menu'
+import { useState } from 'react';
+import { useRouter } from "next/navigation";
+
+
+const NavBar = () => {
+	const [current, setCurrent] = useState('mail' as string);
+	const [eventMenu, setEventMenu] = useState({} as any);
+	const router = useRouter();
+
+	const onClick: MenuProps['onClick'] = (e) => {
+		setEventMenu(e);
+		handleAction(e);
+	};
+	
+	const handleAction = (e: any) => {
+		router.push(e.key);
+		setCurrent(e.key);   
+	}
+return (
+		<div className='nav-bar'>
+			<Row
+				justify="center"
+				className='nav-bar__row'
+			>
+				<Col
+					span={4}
+					className='nav-bar__col'
+				>
+					<h2 className='text-logo'>NTP</h2>
+				</Col>
+				<Col
+					span={20}
+					className='nav-bar__col'
+				>
+					{/* <ul className='nav-bar-menu'>
+						<li className='nav-bar-menu__item'>HOME</li>
+						<li className='nav-bar-menu__item'>EXPERIENCES</li>
+						<li className='nav-bar-menu__item'>CONTACT</li>
+						<li className='nav-bar-menu__item'>SOCIAL NETWORK</li>
+					</ul> */}
+					<Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={menus} style={{ flex: 1, minWidth: 0 }}/>
+				</Col>
+			</Row>
+			{/* <Row
+				justify="center"
+				className='nav-bar__row'
+			>
+				<Col
+					span={6}
+					className='nav-bar__item'
+				>
+					HOME
+				</Col>
+				<Col
+					span={6}
+					className='nav-bar__item'
+				>
+					EXPERIENCES
+				</Col>
+				<Col
+					span={6}
+					className='nav-bar__item'
+				>
+					CONTACT
+				</Col>
+				<Col
+					span={6}
+					className='nav-bar__item'
+				>
+					SOCIAL NETWORK
+				</Col>
+			</Row> */}
+		</div>
+	);
+};
+
+export default NavBar;

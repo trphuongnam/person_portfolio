@@ -1,0 +1,91 @@
+.default-font {
+	font-family: "Saira Condensed", sans-serif;
+}
+
+.text-logo {
+	font-family: "Audiowide", sans-serif;
+	font-size: 55px;
+}
+.container {
+	max-width: 1140px;
+	margin: 0 auto;
+}
+
+.label {
+	color: #0d7c7e;
+	font-size: 25px;
+}
+
+.ctm-button {
+	font-size: 20px;
+	background-color: #0d7c7e;
+}
+
+.form-group {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-bar {
+	width: 100%;
+	margin: 0 auto;
+	height: 80px;
+	border-bottom: 1px solid #ccc;
+	font-size: 23px;
+	color: #0d7c7e;
+	font-weight: 600;
+	&__row {
+		width: 1140px;
+		height: 100%;
+		margin: 0 auto;
+	}
+	&__col {
+		margin: auto;
+	}
+	.nav-bar-menu {
+		display: flex;
+		justify-content: space-between;
+	}
+	.ant-menu {
+		border: none;
+		.ant-menu-item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #0d7c7e;
+		}
+	}
+}
+
+.page-title {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+}
+
+.social-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 30px;
+	.social-item {
+		width: 50%;
+		height: 85px;
+		&__label {
+			color: #0d7c7e;
+			font-size: 25px;
+			font-weight: bold;
+		}
+		&__text {
+			color: #0d7c7e;
+			font-size: 15px;
+			text-transform: capitalize;
+		}
+		&__icon {
+			color: #0d7c7e;
+		}
+	}
+}
+
+.contact-form {
+	margin: 0 auto;
+}
