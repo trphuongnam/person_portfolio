@@ -1,6 +1,7 @@
 import { Col, Row, Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import { menus } from '@/app/common/util/menu'
+import { PAGEURL } from '@/app/common/util/constants';
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
 
@@ -16,7 +17,7 @@ const NavBar = () => {
 	};
 	
 	const handleAction = (e: any) => {
-		router.push(e.key);
+		router.push(PAGEURL[e.key]);
 		setCurrent(e.key);   
 	}
 return (

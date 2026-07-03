@@ -2,7 +2,7 @@ import type { MenuProps } from 'antd';
 export const menus: MenuProps['items'] = [
   {
     label: 'PROFILE',
-    key: '/',
+    key: 'profile',
     icon: '',
     disabled: false
   },
