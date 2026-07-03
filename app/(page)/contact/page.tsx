@@ -127,7 +127,7 @@ export default function ContactPage() {
      }`;
 
   return (
-    <div className="min-h-screen w-full p-6 container">
+    <div className="min-h-screen w-full pt-6 container">
       <h1 className="text-4xl sm:text-5xl font-extrabold tracking-[0.25em] text-neutral-900 page-title">
         CONTACT ME
       </h1>
@@ -140,7 +140,7 @@ export default function ContactPage() {
         >
           {/* Name */}
           <div className="form-group">
-            <div className="w-50">
+            <div className="w-50 form-group__item">
                 <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
                 Name
                 </label>
@@ -164,7 +164,7 @@ export default function ContactPage() {
             </div>
 
             {/* Email */}
-            <div className="w-50">
+            <div className="w-50 form-group__item">
                 <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
                     Email
                 </label>
