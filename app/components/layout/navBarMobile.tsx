@@ -1,12 +1,13 @@
 import { Col, Row, Menu, Button } from "antd";
 import type { MenuProps } from "antd";
 import { menus } from "@/app/common/util/menu";
+import { PAGEURL } from "@/app/common/util/constants";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 
 const NavBarMobile = () => {
-  const [current, setCurrent] = useState("/" as string);
+  const [current, setCurrent] = useState("profile" as string);
   const [eventMenu, setEventMenu] = useState({} as any);
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
@@ -25,20 +26,22 @@ const NavBarMobile = () => {
   };
 
   const handleAction = (e: any) => {
-    router.push(e.key);
+    router.push(PAGEURL[e.key]);
     setCurrent(e.key);
   };
 
   const menuModal = () => {
     return (
+      <>
         <Menu
-            defaultSelectedKeys={[current]}
-            mode="inline"
-            theme="dark"
-            items={menus}
-            onClick={onClick}
-            className={`${collapsed ? "open" : ""}`}
+          defaultSelectedKeys={[current]}
+          mode="inline"
+          theme="dark"
+          items={menus}
+          onClick={onClick}
+          className={`${collapsed ? "open" : ""}`}
         />
+      </>
     );
   };
 
@@ -51,11 +54,11 @@ const NavBarMobile = () => {
         <Col span={12} className="nav-bar-mobile__col">
             <div className="nav-bar-mobile__menu">
                 <Button
-                type="primary"
-                onClick={toggleCollapsed}
-                style={{ marginBottom: 16 }}
+                  type="primary"
+                  onClick={toggleCollapsed}
+                  style={{ marginBottom: 16 }}
                 >
-                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                  {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>
                 { menuModal() }
             </div>

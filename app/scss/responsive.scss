@@ -16,7 +16,11 @@
 }
 /*Ipad dọc(768 x 1024)*/
 @media screen and (min-width: 768px){
-    
+    body {
+        .wrapper {
+            margin: 0 10px;
+        }
+    }
 }
 /*Ipad ngang(1024 x 768)*/
 @media screen and (min-width: 1024px){
