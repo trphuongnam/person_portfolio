@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import "./scss/fonts.scss";
 import "./globals.css";
 import "./scss/common.scss";
+import "./scss/navbar.scss"
+import "./scss/responsive.scss"
+import "./scss/socialNetwork.scss"
+import "./scss/contact.scss"
+import "./scss/profile.scss"
 import MainLayout from "./common/mainLayout";
 import { ConfigProvider } from "antd";
 

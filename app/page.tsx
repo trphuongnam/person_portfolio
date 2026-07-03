@@ -6,7 +6,7 @@ interface infoRowInterface {
   value: string
 }
 const InfoRow = ({ label, value }: infoRowInterface) => (
-  <div className="flex text-sm sm:text-[20px] leading-7">
+  <div className="flex leading-7 text-20">
     <span className="w-[150px] shrink-0 font-semibold tracking-wide text-teal-600">
       {label}
     </span>
@@ -28,24 +28,33 @@ export default function PersonProfile({
     <div className="w-full min-h-screen bg-white pt-6 container">
       <div className="w-full max-w-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* LEFT: Text content */}
-        <div className="order-2 md:order-1">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-[0.25em] text-neutral-900">
-            PROFILE
-          </h1>
-          <p className="mt-1 text-teal-600 tracking-[0.2em] text-sm sm:text-base">
-            IT / SOFTWARE DEVELOPER
+        <div className="information-box">
+          <div className="order-2 md:order-1">
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-[0.25em] text-neutral-900">
+              PROFILE
+            </h1>
+            <p className="mt-1 text-teal-600 tracking-[0.2em] text-sm sm:text-base">
+              IT / SOFTWARE DEVELOPER
+            </p>
+
+            
+            <div className="mt-6 space-y-1 person-info">
+              <InfoRow label="FULL NAME" value={info.fullName} />
+              <InfoRow label="STAGE NAME" value={info.stageName} />
+              <InfoRow label="BIRTHDAY" value={info.birthday} />
+              <InfoRow label="HOMETOWN" value={info.hometown} />
+              <InfoRow label="OCCUPATION" value={info.occupation} />
+            </div> 
+            <hr className="mt-10 border-neutral-200 max-w-xs" />
+          </div>
+          <p className="text-20">
+            Hello! <br/>
+            I’m Nam, a software developer living in Da Nang. <br/>
+            I have 4 years of experience as a software developer. <br/>
+            Welcome to my portfolio.
           </p>
- 
-          <div className="mt-6 space-y-1 person-info">
-            <InfoRow label="FULL NAME" value={info.fullName} />
-            <InfoRow label="STAGE NAME" value={info.stageName} />
-            <InfoRow label="BIRTHDAY" value={info.birthday} />
-            <InfoRow label="HOMETOWN" value={info.hometown} />
-            <InfoRow label="OCCUPATION" value={info.occupation} />
-          </div> 
-          <hr className="mt-10 border-neutral-200 max-w-xs" />
         </div>
- 
+
         {/* RIGHT: Avatar with decorative rings */}
         <div className="order-1 md:order-2 relative flex items-center justify-center h-[420px] sm:h-[520px]">
           {/* Soft background circle */}

@@ -1,5 +1,5 @@
 "use client";
-import { Timeline } from 'antd';
+import { Timeline, TimelineProps } from 'antd';
 import { CodeOutlined } from '@ant-design/icons';
 
 const Experiences = () => {
@@ -71,6 +71,12 @@ const Experiences = () => {
         },
     ];
 
+    const styles: TimelineProps['styles'] = {
+        itemIcon: {
+          borderColor: '#1890ff',
+        },
+      };
+
     return (
         <div className="w-full min-h-screen bg-white pt-6 container">
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-[0.25em] text-neutral-900 page-title">
@@ -79,6 +85,7 @@ const Experiences = () => {
             <Timeline
                 mode="start"
                 items={timeLineData}
+                styles={styles}
             />
         </div>
     )

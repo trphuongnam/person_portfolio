@@ -35,44 +35,9 @@ return (
 					span={20}
 					className='nav-bar__col'
 				>
-					{/* <ul className='nav-bar-menu'>
-						<li className='nav-bar-menu__item'>HOME</li>
-						<li className='nav-bar-menu__item'>EXPERIENCES</li>
-						<li className='nav-bar-menu__item'>CONTACT</li>
-						<li className='nav-bar-menu__item'>SOCIAL NETWORK</li>
-					</ul> */}
 					<Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={menus} style={{ flex: 1, minWidth: 0 }}/>
 				</Col>
 			</Row>
-			{/* <Row
-				justify="center"
-				className='nav-bar__row'
-			>
-				<Col
-					span={6}
-					className='nav-bar__item'
-				>
-					HOME
-				</Col>
-				<Col
-					span={6}
-					className='nav-bar__item'
-				>
-					EXPERIENCES
-				</Col>
-				<Col
-					span={6}
-					className='nav-bar__item'
-				>
-					CONTACT
-				</Col>
-				<Col
-					span={6}
-					className='nav-bar__item'
-				>
-					SOCIAL NETWORK
-				</Col>
-			</Row> */}
 		</div>
 	);
 };
