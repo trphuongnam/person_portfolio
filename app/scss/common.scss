@@ -2,6 +2,10 @@ body {
 	background-color: #fff !important;
 }
 
+.main-color {
+	color: #0d7c7e;
+}
+
 .default-font {
 	font-family: "Saira Condensed", sans-serif;
 }
@@ -37,4 +41,19 @@ body {
 
 .text-20 {
 	font-size: 20px;
+}
+
+.ant-modal {
+	.ant-modal-title {
+		color: #0d7c7e;
+		border-bottom: 1px solid #ccc;
+	}
+	.ant-modal-body {
+		min-height: 200px;
+		font-size: 20px;
+		line-height: 2;
+	}
+	.ant-modal-footer {
+		display: none;
+	}
 }
