@@ -12,9 +12,11 @@
     "@ant-design/icons": "^6.3.2",
     "@emailjs/browser": "^4.4.1",
     "antd": "^6.5.0",
+    "i18next": "^26.3.4",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-i18next": "^17.0.8",
     "sass": "^1.101.0"
   },
   "devDependencies": {

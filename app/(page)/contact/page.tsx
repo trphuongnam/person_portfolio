@@ -9,24 +9,7 @@ import {
   AlertOutlined,
   LoadingOutlined,
 } from "@ant-design/icons";
-
-/**
- * ContactPage
- * Form liên hệ: Name, Email, Subject, Message + nút Send.
- * Gửi email thật qua EmailJS (không cần backend riêng).
- *
- * ---- CÀI ĐẶT EMAILJS (1 lần) ----
- * 1. npm install @emailjs/browser
- * 2. Tạo tài khoản tại https://www.emailjs.com/
- * 3. Tạo Email Service (vd: Gmail) -> lấy SERVICE_ID
- * 4. Tạo Email Template với các biến: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
- *    -> lấy TEMPLATE_ID
- * 5. Lấy PUBLIC_KEY trong phần Account -> API Keys
- * 6. Điền 3 giá trị đó vào props bên dưới (hoặc sửa trực tiếp trong EMAILJS_CONFIG)
- *
- * Nếu không muốn dùng EmailJS, có thể thay hàm handleSubmit để gọi API backend
- * của bạn (fetch POST tới /api/contact) - đã có sẵn TODO bên dưới.
- */
+import { useTranslation } from "react-i18next";
 
 interface ErrorsInterface {
   name?: string;
@@ -42,33 +25,21 @@ interface FormInterface {
   message: string;
 }
 
-const EMAILJS_CONFIG = {
-  serviceId: process.env.NEXT_PUBLIC_MAIL_SERVICE_ID ?? '',
-  templateId: process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID ?? '',
-  publicKey: process.env.NEXT_PUBLIC_MAIL_PUBLIC_KEY ?? '',
-};
-
-const initialForm = { name: "", email: "", subject: "", message: "" };
-
-function validate(form: FormInterface) {
-  const errors: ErrorsInterface = {};
-
-  if (!form.name.trim()) errors.name = "Vui lòng nhập tên";
-  if (!form.email.trim()) {
-    errors.email = "Vui lòng nhập email";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    errors.email = "Email không hợp lệ";
-  }
-  if (!form.subject.trim()) errors.subject = "Vui lòng nhập chủ đề";
-  if (!form.message.trim()) errors.message = "Vui lòng nhập nội dung";
-  return errors;
-}
-
 export default function ContactPage() {
+  const EMAILJS_CONFIG = {
+    serviceId: process.env.NEXT_PUBLIC_MAIL_SERVICE_ID ?? '',
+    templateId: process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID ?? '',
+    publicKey: process.env.NEXT_PUBLIC_MAIL_PUBLIC_KEY ?? '',
+  };
+  
+  const initialForm = { name: "", email: "", subject: "", message: "" };
+
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({}) as any;
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [serverError, setServerError] = useState("");
+
+  const { t } = useTranslation();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -76,6 +47,20 @@ export default function ContactPage() {
     if (errors[name])
       setErrors((prev: any) => ({ ...prev, [name]: undefined }));
   };
+
+  function validate(form: FormInterface) {
+    const errors: ErrorsInterface = {};
+  
+    if (!form.name.trim()) errors.name = t('common.pleaseEnterName');
+    if (!form.email.trim()) {
+      errors.email = t('common.pleaseEnterEmail');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      errors.email = t('common.emailNotCorrect');
+    }
+    if (!form.subject.trim()) errors.subject = t('common.pleaseEnterSubject');
+    if (!form.message.trim()) errors.message = t('common.pleaseEnterMessageContent');
+    return errors;
+  }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -113,7 +98,7 @@ export default function ContactPage() {
       setForm(initialForm);
     } catch (err) {
       console.error(err);
-      setServerError("Gửi email thất bại, vui lòng thử lại sau.");
+      setServerError(t('common.sendEmailError'));
       setStatus("error");
     }
   };
@@ -129,7 +114,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen w-full pt-6 container">
       <h1 className="text-4xl sm:text-5xl font-extrabold tracking-[0.25em] text-neutral-900 page-title">
-        CONTACT ME
+        {t('common.contact')}
       </h1>
       <div className="w-full max-w-lg contact-form">
         {/* Card */}
@@ -142,7 +127,7 @@ export default function ContactPage() {
           <div className="form-group">
             <div className="w-50 form-group__item">
                 <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
-                Name
+                  {t('page.profile.fullName')}
                 </label>
                 <div className="relative">
                 <UserOutlined
@@ -154,19 +139,19 @@ export default function ContactPage() {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Nguyễn Văn A"
+                    placeholder={t('page.contact.exampleName')}
                     className={`${fieldClass(errors.name)} pl-11 form-input default-font`}
                 />
                 </div>
                 {errors.name && (
-                <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+                <p className="mt-1 text-xs text-red-500 default-font">{errors.name}</p>
                 )}
             </div>
 
             {/* Email */}
             <div className="w-50 form-group__item">
                 <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
-                    Email
+                  {t('common.email')}
                 </label>
                 <div className="relative">
                 <MailOutlined
@@ -183,7 +168,7 @@ export default function ContactPage() {
                 />
                 </div>
                 {errors.email && (
-                <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+                <p className="mt-1 text-xs text-red-500 default-font">{errors.email}</p>
                 )}
             </div>
           </div>
@@ -191,25 +176,25 @@ export default function ContactPage() {
           {/* Subject */}
           <div>
             <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
-              Subject
+              {t('page.contact.subject')}
             </label>
             <input
               type="text"
               name="subject"
               value={form.subject}
               onChange={handleChange}
-              placeholder="Subject"
+              placeholder={t('page.contact.subject')}
               className={`${fieldClass(errors.subject)} form-input default-font`}
             />
             {errors.subject && (
-              <p className="mt-1 text-xs text-red-500">{errors.subject}</p>
+              <p className="mt-1 text-xs text-red-500 default-font">{errors.subject}</p>
             )}
           </div>
 
           {/* Message */}
           <div>
             <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
-              Message
+              {t('page.contact.message')}
             </label>
             <div className="relative">
               <MessageOutlined
@@ -220,13 +205,13 @@ export default function ContactPage() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Message content..."
+                placeholder={t('page.contact.message')}
                 rows={5}
                 className={`${fieldClass(errors.message)} pl-11 resize-none form-input default-font`}
               />
             </div>
             {errors.message && (
-              <p className="mt-1 text-xs text-red-500">{errors.message}</p>
+              <p className="mt-1 text-xs text-red-500 default-font">{errors.message}</p>
             )}
           </div>
 
@@ -234,7 +219,7 @@ export default function ContactPage() {
           {status === "success" && (
             <div className="flex items-center gap-2 rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-700 default-font">
               <CheckCircleOutlined size={18} />
-              Gửi thành công! Mình sẽ phản hồi sớm nhất có thể.
+              {t('page.contact.sendSuccess')}
             </div>
           )}
           {status === "error" && (
@@ -253,12 +238,12 @@ export default function ContactPage() {
             {status === "sending" ? (
               <>
                 <LoadingOutlined size={18} className="animate-spin" />
-                Đang gửi...
+                {t('page.contact.sending')}
               </>
             ) : (
               <>
                 <SendOutlined size={16} />
-                Send
+                {t('page.contact.send')}
               </>
             )}
           </button>

@@ -1,0 +1,43 @@
+{
+    "common": {
+        "profile": "Profile",
+        "experiences": "Experiences",
+        "contact": "Contact",
+        "connect": "Connect me",
+        "email": "Email",
+        "pleaseEnterName": "Please enter your name",
+        "pleaseEnterEmail": "Please enter your email",
+        "emailNotCorrect": "Your email isn't correct",
+        "pleaseEnterSubject": "Please enter your subject",
+        "pleaseEnterMessageContent": "Please enter your message content",
+        "sendEmailError": "The email could not be sent, please try again later."
+    },
+    "page": {
+        "profile": {
+            "fullName": "Full Name",
+            "stageName": "Stage Name",
+            "birthday": "Birthday",
+            "hometown": "Hometown",
+            "occupation": "Occupation",
+            "profileIntro": "Hello! <br/> I’m Nam, a software developer living in Da Nang.<br/> I have 4 years of experience as a software developer.<br/> Welcome to my portfolio."
+        },
+        "contact": {
+            "subject": "Subject",
+            "message": "Message Content",
+            "send": "Send",
+            "exampleName": "Nguyen Van A"
+        },
+        "connect": {
+            "facebookText": "Add friends & follow",
+            "githubText": "View source code",
+            "linkedinText": "Connect"
+        },
+        "experience": {
+            "role": "Role:",
+            "teamSize": "Team size:",
+            "descriptions": "Descriptions:",
+            "responsibilities": "Responsibilities:",
+            "technology": "Technologies:"
+        }
+    }
+}
