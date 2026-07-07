@@ -33,7 +33,7 @@
     color: #0d7c7e;
     &__menu {
         display: flex;
-        justify-content: end;
+        justify-content: space-between;
         align-items: center;
         height: 100%;
         .ant-menu {

@@ -5,16 +5,32 @@ import { PAGEURL } from "@/app/common/util/constants";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { useTranslation } from 'react-i18next';
+import { ItemType } from 'antd/es/menu/interface';
 
 const NavBarMobile = () => {
+  const { t, i18n } = useTranslation();
+
   const [current, setCurrent] = useState("profile" as string);
   const [eventMenu, setEventMenu] = useState({} as any);
-  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
+  const [currentLang, setCurrentLang] = useState('vi' as string);
+	const [appMenu, setAppMenu] = useState<any>([])
+  const router = useRouter();
 
   useEffect(() => {
     setCollapsed(false);
   }, [eventMenu])
+
+  useEffect(() => {
+		const transMenus = menus?.map((item: ItemType ) => (
+			{
+				...item,
+				label: t(t(`common.${String(item?.key)}`))
+			} 
+		))
+		setAppMenu(transMenus)
+	}, [currentLang])
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -30,6 +46,11 @@ const NavBarMobile = () => {
     setCurrent(e.key);
   };
 
+  const changeLanguage = (lang: string) => {
+		i18n.changeLanguage(lang);
+		setCurrentLang(lang);
+	};
+
   const menuModal = () => {
     return (
       <>
@@ -37,7 +58,7 @@ const NavBarMobile = () => {
           defaultSelectedKeys={[current]}
           mode="inline"
           theme="dark"
-          items={menus}
+          items={appMenu}
           onClick={onClick}
           className={`${collapsed ? "open" : ""}`}
         />
@@ -53,10 +74,12 @@ const NavBarMobile = () => {
         </Col>
         <Col span={12} className="nav-bar-mobile__col">
             <div className="nav-bar-mobile__menu">
+                <Button onClick={() => changeLanguage(currentLang == "vi" ? "en" : "vi")}>
+                  {currentLang == "vi" ? "EN" : "VI"}
+                </Button>
                 <Button
                   type="primary"
                   onClick={toggleCollapsed}
-                  style={{ marginBottom: 16 }}
                 >
                   {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>

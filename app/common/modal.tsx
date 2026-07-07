@@ -2,11 +2,13 @@
 import { Modal, Empty } from 'antd';
 import { useState, forwardRef, useImperativeHandle } from 'react';
 import { ModalProps, ModalRef } from '../interface/modalInterface';
+import { useTranslation } from "react-i18next";
 
 const CustomModal = forwardRef<ModalRef, ModalProps>((props: ModalProps, ref) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const content = props.content
     const title = props.title
+    const { t } = useTranslation();
 
     useImperativeHandle(ref, () => ({
         onOpenDialog() {
@@ -38,10 +40,11 @@ const CustomModal = forwardRef<ModalRef, ModalProps>((props: ModalProps, ref) =>
 
         return (
             <>
-                <span className='label'>Role:</span> {role} | <span className='label'>Team size:</span> {teamSize} <br></br>
-                <span className='label'>Descriptions</span>: {descriptions} <br></br>
-                <span className='label'>Responsibilities: </span><br></br> {getRespons(responsibility)}
-                <span className='label'>Technologies: </span>{technology}
+                <span className='label'>{t('page.experience.role')}</span> {role} <br></br>
+                <span className='label'>{t('page.experience.teamSize')}</span> {teamSize} <br></br>
+                <span className='label'>{t('page.experience.descriptions')}</span> {descriptions} <br></br>
+                <span className='label'>{t('page.experience.responsibilities')} </span><br></br> {getRespons(responsibility)}
+                <span className='label'>{t('page.experience.technology')} </span>{technology}
             </>
         );
     }

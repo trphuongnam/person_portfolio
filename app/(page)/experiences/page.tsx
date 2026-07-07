@@ -1,16 +1,19 @@
 "use client";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Timeline, TimelineProps, Button } from 'antd';
 import { CodeOutlined, BankOutlined } from '@ant-design/icons';
-import { EXPERIENCES } from '@/app/mockData/experiences';
+import { EXPERIENCES_EN, EXPERIENCES_VN } from '@/app/mockData/experiences';
 import { TimeLineItemInterface, TimeLineItemDetail } from '@/app/interface';
 import CustomModal from '@/app/common/modal';
 import { ModalRef } from '@/app/interface/modalInterface';
+import { useTranslation } from "react-i18next";
 
 const Experiences = () => {
     const modalRef = useRef<ModalRef>(null);
     const [modalTiltle, setModalTitle] = useState<string>('')
     const [modalBody, setModalBody] = useState<TimeLineItemDetail | undefined>(undefined)
+    const [experiences, setExperiences] = useState<any>([])
+    const { t, i18n } = useTranslation();
 
     const handleClickTitleTimeline = (item: TimeLineItemInterface) => {
         if (item.txtContent) {
@@ -20,9 +23,17 @@ const Experiences = () => {
         }
     }
 
-    const timeLineDatas = EXPERIENCES.map((item) => {
+    useEffect(() => {
+        if (i18n.language == 'vi') {
+            setExperiences(EXPERIENCES_VN)
+        } else {
+            setExperiences(EXPERIENCES_EN)
+        }
+    })
+
+    const timeLineDatas = experiences.map((item: any) => {
         const data: TimeLineItemInterface =  {
-            content: <Button className='main-color' type="link" onClick={() => handleClickTitleTimeline(item as TimeLineItemInterface)}>{item.txtContent}</Button>,
+            content: <Button className='main-color button-wrap' type="link" onClick={() => handleClickTitleTimeline(item as TimeLineItemInterface)}>{item.txtContent}</Button>,
             color: 'green',
             icon: <CodeOutlined style={{ fontSize: '16px' }} />
         };
@@ -44,7 +55,7 @@ const Experiences = () => {
     return (
         <div className="w-full min-h-screen bg-white pt-6 container">
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-[0.25em] text-neutral-900 page-title">
-                EXPERIENCES
+                {t('common.experiences')}
             </h1>
             <Timeline
                 mode="start"

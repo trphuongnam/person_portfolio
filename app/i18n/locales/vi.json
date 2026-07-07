@@ -1,0 +1,45 @@
+{
+    "common": {
+        "profile": "Hồ Sơ",
+        "experiences": "Kinh nghiệm",
+        "contact": "Liên hệ",
+        "connect": "Kết nối",
+        "email": "Email",
+        "pleaseEnterName": "Vui lòng nhập tên",
+        "pleaseEnterEmail": "Vui lòng nhập email",
+        "emailNotCorrect": "Email không hợp lệ",
+        "pleaseEnterSubject": "Vui lòng nhập chủ đề",
+        "pleaseEnterMessageContent": "Vui lòng nhập nội dung tin nhắn",
+        "sendEmailError": "Gửi email thất bại, vui lòng thử lại sau."
+    },
+    "page": {
+        "profile": {
+            "fullName": "Họ và tên",
+            "stageName": "Bí danh",
+            "birthday": "Ngày sinh",
+            "hometown": "Nơi ở",
+            "occupation": "Nghề nghiệp",
+            "profileIntro": "Xin chào! <br/> Tôi là Nam, là Software Developer sống tại Đà Nẵng. <br/> Tôi có 4 năm kinh nghiệm trong ngành phát triển phần mềm.<br/> Chào mừng bạn đến với portfolio của tôi."
+        },
+        "contact": {
+            "subject": "Tiêu đề",
+            "message": "Nội dung tin nhắn",
+            "send": "Gửi",
+            "exampleName": "Nguyễn Văn A",
+            "sendSuccess": "Gửi thành công! Mình sẽ phản hồi sớm nhất có thể.",
+            "sending": "Đang gửi..."
+        },
+        "connect": {
+            "facebookText": "Thêm bạn bè & theo dõi",
+            "githubText": "Xem source code",
+            "linkedinText": "Kết nối"
+        },
+        "experience": {
+            "role": "Vai trò:",
+            "teamSize": "Số thành viên:",
+            "descriptions": "Mô tả dự án:",
+            "responsibilities": "Nhiệm vụ:",
+            "technology": "Công nghệ:"
+        }
+    }
+}

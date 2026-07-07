@@ -2,6 +2,7 @@
 import React from 'react'
 import { Geist, Geist_Mono } from "next/font/google";
 import BaseLayout from '../components/layout/baseLayout';
+import "@/app/i18n";
 
 export type Props = {
   children: React.ReactNode
