@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 import "./scss/fonts.scss";
 import "./globals.css";
 import "./scss/common.scss";

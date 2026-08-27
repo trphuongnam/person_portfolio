@@ -9,6 +9,7 @@ const BaseLayout = ({
   childComponent: React.ReactNode;
 }>) => {
   const { Content } = Layout;
+
   return (
     <div className="wrapper">
       <div className="hidden md:block">
@@ -22,7 +23,7 @@ const BaseLayout = ({
         {childComponent}
       </Content>
     </div>
-  )
+  ) 
 }
 
 export default BaseLayout;

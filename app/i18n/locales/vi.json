@@ -5,12 +5,14 @@
         "contact": "Liên hệ",
         "connect": "Kết nối",
         "email": "Email",
+        "top": "Trang chủ",
         "pleaseEnterName": "Vui lòng nhập tên",
         "pleaseEnterEmail": "Vui lòng nhập email",
         "emailNotCorrect": "Email không hợp lệ",
         "pleaseEnterSubject": "Vui lòng nhập chủ đề",
         "pleaseEnterMessageContent": "Vui lòng nhập nội dung tin nhắn",
-        "sendEmailError": "Gửi email thất bại, vui lòng thử lại sau."
+        "sendEmailError": "Gửi email thất bại, vui lòng thử lại sau.",
+        "pleaseEnterPassword": "Vui lòng nhập mật khẩu"
     },
     "page": {
         "profile": {
@@ -40,6 +42,10 @@
             "descriptions": "Mô tả dự án:",
             "responsibilities": "Nhiệm vụ:",
             "technology": "Công nghệ:"
+        },
+        "login": {
+            "login": "Đăng nhập",
+            "password": "Mật khẩu"
         }
     }
 }

@@ -5,12 +5,14 @@
         "contact": "Contact",
         "connect": "Connect me",
         "email": "Email",
+        "top": "Top",
         "pleaseEnterName": "Please enter your name",
         "pleaseEnterEmail": "Please enter your email",
         "emailNotCorrect": "Your email isn't correct",
         "pleaseEnterSubject": "Please enter your subject",
         "pleaseEnterMessageContent": "Please enter your message content",
-        "sendEmailError": "The email could not be sent, please try again later."
+        "sendEmailError": "The email could not be sent, please try again later.",
+        "pleaseEnterPassword": "Please enter your password"
     },
     "page": {
         "profile": {
@@ -38,6 +40,10 @@
             "descriptions": "Descriptions:",
             "responsibilities": "Responsibilities:",
             "technology": "Technologies:"
+        },
+        "login": {
+            "login": "Login",
+            "password": "Password"
         }
     }
 }

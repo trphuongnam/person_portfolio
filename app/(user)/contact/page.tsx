@@ -10,6 +10,7 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { useCreateContact } from "@/src/dataconnect-generated/react";
 
 interface ErrorsInterface {
   name?: string;
@@ -26,6 +27,8 @@ interface FormInterface {
 }
 
 export default function ContactPage() {
+  const { mutate, isPending, error, data } = useCreateContact();
+
   const EMAILJS_CONFIG = {
     serviceId: process.env.NEXT_PUBLIC_MAIL_SERVICE_ID ?? '',
     templateId: process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID ?? '',
@@ -94,6 +97,19 @@ export default function ContactPage() {
       // });
       // if (!res.ok) throw new Error("Gửi thất bại");
 
+      const contactData = {
+        fullName: form.name,
+        email: form.email,
+        subject: form.subject,
+        content: form.message,
+      }
+      const {error, data} = saveContactData(contactData)
+      if (error) {
+        console.error(error);
+        setServerError(t('common.sendEmailError'));
+        setStatus("error");
+      }
+  
       setStatus("success");
       setForm(initialForm);
     } catch (err) {
@@ -102,6 +118,17 @@ export default function ContactPage() {
       setStatus("error");
     }
   };
+
+  const saveContactData = (contactData: any) => {
+    mutate({
+      fullName: contactData.fullName,
+      email: contactData.email,
+      subject: contactData.subject,
+      content: contactData.content
+    });
+
+    return {error, data, isPending}
+  }
 
   const fieldClass = (hasError: any) =>
     `w-full rounded-xl border px-4 py-3 text-sm text-neutral-900 placeholder-neutral-400 outline-none transition-colors
