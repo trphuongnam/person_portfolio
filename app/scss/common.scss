@@ -43,6 +43,12 @@ body {
 	font-size: 20px;
 }
 
+.main-content {
+	height: 100vh;
+	background: linear-gradient(135deg, #e6f4ff 0%, #ffffff 100%);
+    padding: 80px 40px
+}
+
 .ant-modal {
 	.ant-modal-title {
 		color: #0d7c7e;
@@ -62,4 +68,63 @@ body {
 	word-break: break-word;
 	text-align: left;
     padding: 0;
+}
+
+.admin-layout {
+	height: 100vh;
+	font-size: 20px;
+	font-family: 'Courier New', Courier, monospace !important;
+	font-size: 20px !important;
+}
+
+.post-item {
+	&__title {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		.ant-btn {
+			padding: 0;
+		}
+	}
+}
+
+.post-detail {
+	margin: 0 auto;
+	&__title {
+		text-align: center;
+		font-weight: bold;
+	}
+
+	&__description {
+		text-align: center;
+	}
+
+	&__content {
+		text-align: justify;
+		white-space: pre-line;
+	}
+
+	&__image {
+		width: 300px;
+		position: relative;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+}
+
+.dropdown {
+	padding: 5px 10px;
+    background: #1677FF;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.ant-dropdown {
+	.ant-dropdown-menu {
+		padding: 10px;
+		.ant-dropdown-menu-item {
+			list-style: disc;
+			margin-bottom: 12px;
+		}
+	}
 }
