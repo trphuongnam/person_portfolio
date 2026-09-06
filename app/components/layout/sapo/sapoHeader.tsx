@@ -4,7 +4,6 @@ import {
     Menu,
     Button,
     Space,
-    Typography,
     Grid,
     Drawer,
     Image
@@ -15,7 +14,6 @@ import { useRouter } from "next/navigation";
 import { SAPOPAGEURL } from "@/app/common/util/constants";
 
 const { Header } = Layout;
-const { Text } = Typography;
 const { useBreakpoint } = Grid;
 
 const SapoHeader = () => {
@@ -76,7 +74,7 @@ const SapoHeader = () => {
 
             {/* ---------------- MOBILE MENU DRAWER ---------------- */}
             <Drawer
-                title="CÔNG TY ABC"
+                title="Nam Sapo"
                 placement="right"
                 onClose={() => setDrawerOpen(false)}
                 open={drawerOpen}

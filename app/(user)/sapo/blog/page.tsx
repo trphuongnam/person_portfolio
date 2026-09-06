@@ -1,9 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Col, Row, Pagination, Button, Tooltip } from 'antd';
-import { supabase } from "@/app/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { SAPOPAGEURL } from "@/app/common/util/constants";
+import { getPosts } from "@/app/queries/posts";
+import { notify } from "@/app/common/util/notification";
 
 const Blog = () => {
   const PAGE_SIZE = 6;
@@ -14,17 +15,16 @@ const Blog = () => {
   const [posts, setPosts] = useState([]) as any
 
   useEffect(() => {
-    getPosts()
+    onGetPosts()
   }, [])
 
-  const getPosts = async () => {
-    const { data, error } = await supabase.from('posts').select().neq('category_id', '063bd274-505e-4398-8c7c-beb257af2601')
-    console.log(data)
-    if (error) {
-      console.error(error)
-      return
+  const onGetPosts = async () => {
+    const { success, data, error } = await getPosts(3, false);
+    if (!success) {
+      notify.error("Lỗi", String(error));
+      return;
     }
-    setPosts(data)
+    setPosts(data);
   }
 
   const currentPosts = posts.slice(

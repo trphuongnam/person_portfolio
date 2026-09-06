@@ -124,7 +124,7 @@ export default function ContactPage() {
               {t('page.login.password')}
             </label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={form.password}
               onChange={handleChange}

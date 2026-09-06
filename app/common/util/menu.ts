@@ -78,6 +78,15 @@ export const adminMenus: MenuItem[] = [
     ],
   },
   {
+    key: 'posts',
+    icon: '',
+    label: 'Bài viết',
+    children: [
+      { key: 'listPost', label: 'Danh sách bài viết' },
+      { key: 'createPost', label: 'Tạo bài viết' }
+    ],
+  },
+  {
     key: 'config',
     icon: '',
     label: 'Cấu hình'

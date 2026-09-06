@@ -22,7 +22,7 @@ const PriceList = () => {
   }, [])
 
   const getPrices = async () => {
-    const { data, error } = await supabase.from('posts').select().eq('category_id', '063bd274-505e-4398-8c7c-beb257af2601')
+    const { data, error } = await supabase.from('posts').select().eq('category_id', '063bd274-505e-4398-8c7c-beb257af2601').eq('status', 1)
     if (error) {
       console.error(error)
       return
