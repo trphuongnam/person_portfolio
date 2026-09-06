@@ -19,5 +19,8 @@ export const ADMINPAGEURL: Record<string, string>  = {
     listUser: '/admin/user',
     createUser: '/admin/user/create',
     updateUser: '/admin/user/update',
+    listPost: '/admin/posts',
+    createPost: '/admin/posts/create',
+    editPost: '/admin/posts/[uid]',
     config: '/admin/config'
 }

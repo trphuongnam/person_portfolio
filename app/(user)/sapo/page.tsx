@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Button,
   Row,
@@ -14,41 +15,12 @@ import {
 } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import { getPosts } from "@/app/queries/posts";
+import { notify } from "@/app/common/util/notification";
+import { useRouter } from "next/navigation";
+import { SAPOPAGEURL } from "@/app/common/util/constants";
 
 const { Title, Paragraph, Text } = Typography;
-
-// ---------------------------------------------
-// DỮ LIỆU MẪU - Thay bằng dữ liệu thật (API, CMS...) khi tích hợp
-// ---------------------------------------------
-const posts = [
-  {
-    id: 1,
-    title: "5 xu hướng công nghệ nổi bật năm 2026",
-    excerpt:
-      "Cùng điểm qua những xu hướng công nghệ được dự đoán sẽ tạo ra bước ngoặt lớn cho doanh nghiệp trong năm nay.",
-    image: "https://picsum.photos/seed/post1/600/400",
-    date: "20/08/2026",
-    category: "Công nghệ",
-  },
-  {
-    id: 2,
-    title: "Bí quyết xây dựng đội ngũ vận hành hiệu quả",
-    excerpt:
-      "Chia sẻ kinh nghiệm thực tế từ đội ngũ vận hành của chúng tôi trong quá trình mở rộng quy mô công ty.",
-    image: "https://picsum.photos/seed/post2/600/400",
-    date: "15/08/2026",
-    category: "Vận hành",
-  },
-  {
-    id: 3,
-    title: "Case study: Tối ưu chi phí vận hành cho khách hàng X",
-    excerpt:
-      "Chi tiết quá trình đồng hành cùng khách hàng để cắt giảm 30% chi phí vận hành trong vòng 6 tháng.",
-    image: "https://picsum.photos/seed/post3/600/400",
-    date: "10/08/2026",
-    category: "Case Study",
-  },
-];
 
 const testimonials = [
   {
@@ -81,6 +53,27 @@ const testimonials = [
 ];
 
 export default function HomePage() {
+  const [newPosts, setNewPosts] = useState([]) as any;
+  const router = useRouter()
+
+  useEffect(() => {
+    onGetPosts()
+  }, [])
+  
+  async function onGetPosts() {
+    const { success, data, error } = await getPosts(3, false);
+    if (!success) {
+      notify.error("Lỗi", String(error));
+      return;
+    }
+    setNewPosts(data);
+  }
+
+  const onViewDetail = (postId: string) => {
+    const pageUrl = SAPOPAGEURL.detailPost.replace('[uid]', postId)
+    router.push(pageUrl)
+  }
+
   return (
     
     <div>
@@ -133,19 +126,20 @@ export default function HomePage() {
           </div>
 
           <Row gutter={[24, 24]}>
-            {posts.map((post) => (
+            {newPosts.map((post: any) => (
               <Col xs={24} sm={12} md={8} key={post.id}>
                 <Card
                   hoverable
                   cover={
                     <Image
-                      src={post.image}
+                      src={post.image_url}
                       alt={post.title}
                       width={600}
                       height={400}
                       style={{ width: "100%", height: 220, objectFit: "cover" }}
                     />
                   }
+                  onClick={() => onViewDetail(post.id)}
                 >
                   <Space orientation="vertical" size={4} style={{ marginBottom: 8 }}>
                     <Space size={8}>
@@ -159,7 +153,7 @@ export default function HomePage() {
                     {post.title}
                   </Title>
                   <Paragraph type="secondary" ellipsis={{ rows: 2 }}>
-                    {post.excerpt}
+                    {post.description}
                   </Paragraph>
                   <Button type="link" style={{ paddingLeft: 0 }}>
                     Đọc thêm <ArrowRightOutlined />
