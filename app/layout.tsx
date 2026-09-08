@@ -7,6 +7,7 @@ import "./scss/responsive.scss"
 import "./scss/socialNetwork.scss"
 import "./scss/contact.scss"
 import "./scss/profile.scss"
+import "./scss/quotation.scss"
 import MainLayout from "./common/mainLayout";
 import { ConfigProvider } from "antd";
 

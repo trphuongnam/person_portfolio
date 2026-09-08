@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Row, Dropdown, Space, Image } from 'antd';
+import { Row, Dropdown, Space, Image, Button } from 'antd';
 import type { MenuProps } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined, FormOutlined } from '@ant-design/icons';
 import { supabase } from "@/app/lib/supabaseClient";
 import DataEmpty from "@/app/components/layout/dataEmpty";
+import { useRouter } from "next/navigation";
+import { SAPOPAGEURL } from "@/app/common/util/constants";
 
 interface DropdownItemSelected {
     key: string,
@@ -15,6 +17,7 @@ interface DropdownItemSelected {
 const PriceList = () => {
   const [dropdownData, setDropDownData] = useState<MenuProps['items']>([])
   const [selected, setSelected] = useState<DropdownItemSelected | null>(null)
+  const router = useRouter()
 
 
   useEffect(() => {
@@ -42,6 +45,10 @@ const PriceList = () => {
   const onChangeProduct = (item: any) => {
     const { itemData } = item
     setSelected(itemData)
+  }
+
+  const onSwithPage = () => {
+    router.push(SAPOPAGEURL.createQuotation)
   }
 
   return (
@@ -74,6 +81,7 @@ const PriceList = () => {
                         </a>
                     </Dropdown>
                 </div>
+                <Button type="primary" icon={<FormOutlined />} size="large" onClick={onSwithPage}>Tạo báo giá</Button>
             </div>
             <div>
                 {
