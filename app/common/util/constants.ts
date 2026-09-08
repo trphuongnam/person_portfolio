@@ -10,7 +10,8 @@ export const SAPOPAGEURL: Record<string, string>  = {
     contact: '/sapo/contact',
     blog: '/sapo/blog',
     detailPost: '/sapo/blog/[uid]',
-    priceList: '/sapo/priceList',
+    quotation: '/sapo/quotation',
+    createQuotation: '/sapo/quotation/create',
 }
 
 export const ADMINPAGEURL: Record<string, string>  = {
