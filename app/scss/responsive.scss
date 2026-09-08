@@ -2,6 +2,12 @@
     body {
         .wrapper {
             margin: 0 10px;
+            .main-content {
+                height: auto;
+                .iframe-body {
+                    height: 100%;
+                }
+            }
         }
     }
 }
@@ -19,6 +25,12 @@
     body {
         .wrapper {
             margin: 0 10px;
+            .main-content {
+                height: auto;
+                .iframe-body {
+                    height: 100%;
+                }
+            }
         }
     }
 }

@@ -37,7 +37,13 @@ export const sapoMenus: MenuProps['items'] = [
   },
   {
     label: 'Báo giá',
-    key: 'priceList',
+    key: 'quotation',
+    icon: '',
+    disabled: false
+  },
+  {
+    label: 'Tạo báo giá nhanh',
+    key: 'createQuotation',
     icon: '',
     disabled: false
   },
