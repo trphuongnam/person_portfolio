@@ -44,7 +44,8 @@ body {
 }
 
 .main-content {
-	height: 100vh;
+	min-height: 100vh;
+	height: auto;
 	background: linear-gradient(135deg, #e6f4ff 0%, #ffffff 100%);
     padding: 80px 40px
 }

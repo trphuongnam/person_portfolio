@@ -10,6 +10,8 @@
         "pleaseEnterEmail": "Vui lòng nhập email",
         "emailNotCorrect": "Email không hợp lệ",
         "pleaseEnterSubject": "Vui lòng nhập chủ đề",
+        "pleaseEnterPhone": "Vui lòng nhập số điện thoại",
+        "phoneNotCorrect": "Số điện thoại không hợp lệ",
         "pleaseEnterMessageContent": "Vui lòng nhập nội dung tin nhắn",
         "sendEmailError": "Gửi email thất bại, vui lòng thử lại sau.",
         "pleaseEnterPassword": "Vui lòng nhập mật khẩu"
@@ -29,7 +31,8 @@
             "send": "Gửi",
             "exampleName": "Nguyễn Văn A",
             "sendSuccess": "Gửi thành công! Mình sẽ phản hồi sớm nhất có thể.",
-            "sending": "Đang gửi..."
+            "sending": "Đang gửi...",
+            "phone": "Số điện thoại"
         },
         "connect": {
             "facebookText": "Thêm bạn bè & theo dõi",

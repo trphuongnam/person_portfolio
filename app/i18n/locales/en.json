@@ -10,6 +10,8 @@
         "pleaseEnterEmail": "Please enter your email",
         "emailNotCorrect": "Your email isn't correct",
         "pleaseEnterSubject": "Please enter your subject",
+        "pleaseEnterPhone": "Please enter your phone",
+        "phoneNotCorrect": "Your phone isn't correct",
         "pleaseEnterMessageContent": "Please enter your message content",
         "sendEmailError": "The email could not be sent, please try again later.",
         "pleaseEnterPassword": "Please enter your password"
@@ -27,7 +29,8 @@
             "subject": "Subject",
             "message": "Message Content",
             "send": "Send",
-            "exampleName": "Nguyen Van A"
+            "exampleName": "Nguyen Van A",
+            "phone": "Phone number"
         },
         "connect": {
             "facebookText": "Add friends & follow",

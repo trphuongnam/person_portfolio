@@ -92,40 +92,30 @@ export default function AdminPostPage() {
       width: 200,
     },
     {
-      title: "Trạng thái",
-      dataIndex: "status",
-      key: "status",
-      width: 100,
-      render: (_: any, { id, status }: any) => {
-        return (
-          <Switch
-            defaultChecked={status == 1 ? true : false}
-            onChange={(checked: boolean) => onChangeStatus(checked, id, status)}
-          />
-        );
-      },
-    },
-    {
       title: "Hành động",
       dataIndex: "actions",
       key: "actions",
       width: 200,
-      render: (_: any, { id }: any) => {
+      render: (_: any, { id, status }: any) => {
         return (
           <>
-            <Button
-              type="primary"
-              shape="circle"
-              icon={<EditOutlined />}
-              onClick={() => onEdit(id)}
-            />
-            <Button
-              type="primary"
-              shape="circle"
-              icon={<DeleteOutlined />}
-              onClick={() => onDelete(id)}
-              danger
-            />
+            <div className="flex justify-around">
+              <Switch
+                defaultChecked={status == 1 ? true : false}
+                onChange={(checked: boolean) => onChangeStatus(checked, id, status)}
+              />
+              <Button
+                type="primary"
+                icon={<EditOutlined />}
+                onClick={() => onEdit(id)}
+              />
+              <Button
+                type="primary"
+                icon={<DeleteOutlined />}
+                onClick={() => onDelete(id)}
+                danger
+              />
+            </div>
           </>
         );
       },
