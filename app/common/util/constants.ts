@@ -12,6 +12,7 @@ export const SAPOPAGEURL: Record<string, string>  = {
     detailPost: '/sapo/blog/[uid]',
     quotation: '/sapo/quotation',
     createQuotation: '/sapo/quotation/create',
+    tutorial: '/sapo/tutorial'
 }
 
 export const ADMINPAGEURL: Record<string, string>  = {

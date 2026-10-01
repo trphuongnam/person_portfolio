@@ -41,15 +41,21 @@ export const sapoMenus: MenuProps['items'] = [
     icon: '',
     disabled: false
   },
+  // {
+  //   label: 'Tạo báo giá nhanh',
+  //   key: 'createQuotation',
+  //   icon: '',
+  //   disabled: false
+  // },
   {
-    label: 'Tạo báo giá nhanh',
-    key: 'createQuotation',
+    label: 'Bài viết',
+    key: 'blog',
     icon: '',
     disabled: false
   },
   {
-    label: 'Bài viết',
-    key: 'blog',
+    label: 'Hướng dẫn sử dụng',
+    key: 'tutorial',
     icon: '',
     disabled: false
   },

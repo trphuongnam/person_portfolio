@@ -17,6 +17,7 @@ interface ErrorsInterface {
   email?: string;
   subject?: string;
   message?: string;
+  phone?: string;
 }
 
 interface FormInterface {
@@ -24,6 +25,7 @@ interface FormInterface {
   email: string;
   subject: string;
   message: string;
+  phone: string;
 }
 
 export default function ContactPage() {
@@ -33,7 +35,7 @@ export default function ContactPage() {
     publicKey: process.env.NEXT_PUBLIC_MAIL_PUBLIC_KEY ?? '',
   };
   
-  const initialForm = { name: "", email: "", subject: "", message: "" };
+  const initialForm = { name: "", email: "", phone: "", subject: "", message: "" };
 
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({}) as any;
@@ -58,6 +60,11 @@ export default function ContactPage() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       errors.email = t('common.emailNotCorrect');
     }
+    if (!form.phone.trim()) {
+      errors.phone = t('common.pleaseEnterPhone');
+    } else if (!/^(03|05|07|08|09)[0-9]{8}$/.test(form.phone)) {
+      errors.phone = t('common.phoneNotCorrect');
+    }
     if (!form.subject.trim()) errors.subject = t('common.pleaseEnterSubject');
     if (!form.message.trim()) errors.message = t('common.pleaseEnterMessageContent');
     return errors;
@@ -81,6 +88,7 @@ export default function ContactPage() {
         {
           from_name: form.name,
           from_email: form.email,
+          phone: form.phone,
           subject: form.subject,
           message: form.message,
         },
@@ -98,6 +106,7 @@ export default function ContactPage() {
       const contactData = {
         fullName: form.name,
         email: form.email,
+        phone: form.phone,
         subject: form.subject,
         content: form.message,
       }
@@ -126,7 +135,7 @@ export default function ContactPage() {
         subject: contactData.subject,
         content: contactData.content,
         send_from: 'sapo',
-        phone_number: '012345689'
+        phone_number: contactData.phone
       })
       .select()
 
@@ -201,6 +210,24 @@ export default function ContactPage() {
                   <p className="mt-1 text-xs text-red-500 default-font">{errors.email}</p>
                   )}
               </div>
+            </div>
+
+            {/* Phone number */}
+            <div>
+              <label className="block text-xs font-semibold text-neutral-700 mb-1.5 label default-font">
+                {t('page.contact.phone')}
+              </label>
+              <input
+                type="text"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder={t('page.contact.phone')}
+                className={`${fieldClass(errors.phone)} form-input default-font`}
+              />
+              {errors.subject && (
+                <p className="mt-1 text-xs text-red-500 default-font">{errors.phone}</p>
+              )}
             </div>
 
             {/* Subject */}

@@ -38,15 +38,21 @@ export default function AdminContactPage() {
       key: 'phone_number',
     },
     {
-      title: 'Tiêu đề',
-      dataIndex: 'subject',
-      key: 'subject',
-    },
-    {
         title: 'Nội dung',
         dataIndex: 'content',
         key: 'content',
-        width: 250
+        width: 500,
+        render: (_: any, { subject, content }: any) => {
+          return (
+            <>
+              <p><b>Tiêu đề: </b><i>{subject}</i></p>
+              <p>
+                <b>Nội dung: </b><br></br>
+                <i>{content}</i>
+              </p>
+            </>
+          )
+        }
     },
     {
       title: 'Nơi gửi',
@@ -71,7 +77,7 @@ export default function AdminContactPage() {
 
   return (
     <div className="w-full">
-        <Table dataSource={dataSource} columns={columns} />;
+        <Table dataSource={dataSource} columns={columns} />
     </div>
   );
 }
